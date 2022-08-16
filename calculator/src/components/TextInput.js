@@ -1,15 +1,20 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-export default function TextInput() {
+export default function TextInput(props) {
 
-    const [value, setValue] = useState(0)
+    const handleInputChange = (newValue) => {
+        props.valueChange(newValue);
+    };
 
     return (
         <div>
-            <TextField 
+            <input 
                 type="number"
-                onChange={handleInputChange}
-                value={value}
+                onChange={(newValue) => {
+                    handleInputChange(newValue.target.value)
+                }}
+                placeholder="0"
+                min={props.minimumInput}
             />
         </div>
     )
