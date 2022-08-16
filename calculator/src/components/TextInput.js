@@ -3,7 +3,7 @@ import React from 'react';
 export default function TextInput(valueChange) {
 
     const handleInputChange = (newValue) => {
-        valueChange(newValue);
+        valueChange.valueChange(newValue);
     };
 
     return (
