@@ -10,20 +10,19 @@ export default function DisplayCalculator() {
 
     const handleBalanceChange = (newValue) => {
         setAccountBalance(newValue);
-        // calculateOverdraft();
     };
     const handleSpendingChange = (newValue) => {
         setTotalSpending(newValue);
-        // calculateOverdraft();
     };
     const handleCreditChange = (newValue) => {
         setCreditLimit(newValue);
-        // calculateOverdraft();
     };
+
     const calculateOverdraft = () => {
         const overdraftTotal = overdraftCalculator(accountBalance, totalSpending, creditLimit);
         setOverdraftDisplay(overdraftTotal);
     };
+
     useEffect(() => {
         calculateOverdraft()
     }, [accountBalance, totalSpending, creditLimit])
@@ -32,18 +31,22 @@ export default function DisplayCalculator() {
         <div>
             <div>
                 <h3>Starting Account Balance</h3>
-                <TextInput valueChange={handleBalanceChange}/>
+                <TextInput minimumInput="" valueChange={handleBalanceChange}/>
             </div>
             <div>
                 <h3>Total Monthly Spendings</h3>
-                <TextInput valueChange={handleSpendingChange}/>
+                <TextInput minimumInput={0} valueChange={handleSpendingChange}/>
             </div>
             <div>
                 <h3>Credit Limit</h3>
-                <TextInput valueChange={handleCreditChange}/>
+                <TextInput minimumInput={0} valueChange={handleCreditChange}/>
             </div>
             <div>
-                <h3>{overdraftDisplay}</h3>
+                <h3>
+                    {overdraftDisplay.overdraftMessage}
+                    <br />
+                    {overdraftDisplay.interest}    
+                </h3>
             </div>
         </div>
     )

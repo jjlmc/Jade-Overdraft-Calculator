@@ -1,20 +1,20 @@
 import React from 'react';
 
-export default function TextInput(valueChange) {
+export default function TextInput(props) {
 
     const handleInputChange = (newValue) => {
-        valueChange.valueChange(newValue);
+        props.valueChange(newValue);
     };
 
     return (
         <div>
             <input 
-                label="0"
                 type="number"
                 onChange={(newValue) => {
                     handleInputChange(newValue.target.value)
                 }}
                 placeholder="0"
+                min={props.minimumInput}
             />
         </div>
     )
