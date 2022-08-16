@@ -1,11 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-export default function TextInput() {
-
-    const [value, setValue] = useState(0);
+export default function TextInput(valueChange) {
 
     const handleInputChange = (newValue) => {
-        setValue(newValue);
+        valueChange(newValue);
     };
 
     return (
